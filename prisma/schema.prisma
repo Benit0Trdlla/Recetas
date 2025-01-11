@@ -1,0 +1,43 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model Usuario {
+  id_usuario       Int             @id @default(autoincrement())
+  nombre           String
+  apellido         String
+  email            String          @unique
+  contraseña       String
+  recetasCreadas   Receta[] // Relación uno a muchos: un usuario puede crear muchas recetas
+  recetasGuardadas UsuarioReceta[] // Relación muchos a muchos: un usuario puede guardar muchas recetas
+}
+
+model Receta {
+  id_receta       Int             @id @default(autoincrement())
+  titulo          String
+  descripcion     String?
+  ingredientes    String?
+  id_usuario      Int             // Clave foránea para el usuario que creó la receta
+  usuarioCreador  Usuario         @relation(fields: [id_usuario], references: [id_usuario]) // Relación muchos a uno
+  usuariosGuardados UsuarioReceta[] // Relación muchos a muchos: una receta puede ser guardada por muchos usuarios
+}
+
+model UsuarioReceta {
+  id_usuario      Int
+  id_receta       Int
+  usuario         Usuario         @relation(fields: [id_usuario], references: [id_usuario])
+  receta          Receta          @relation(fields: [id_receta], references: [id_receta])
+
+  @@id([id_usuario, id_receta]) // Clave primaria compuesta
+}
