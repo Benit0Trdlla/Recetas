@@ -31,7 +31,7 @@ export default function RegisterPage() {
 
     return (
         <>
-            <form className="container d-flex justify-content-center align-items-center vh-100 flex-column" onSubmit={onSubmit}>
+            <form className="container d-flex justify-content-center align-items-center vh-50 flex-column" onSubmit={onSubmit}>
                 <h1 className="text-white fw-bold mt-3">Register</h1>
 
                 <div className="form-floating mb-3">

@@ -25,7 +25,7 @@ export default function LoginPage() {
     })
     return (
         <>
-            <form className="container d-flex justify-content-center align-items-center vh-100 flex-column" onSubmit={onSubmit}>
+            <form className="container d-flex justify-content-center align-items-center vh-50 flex-column" onSubmit={onSubmit}>
                 {error && <p className="alert alert-danger">{error}</p>}
                 <h1 className="text-white fw-bold mt-3">Login</h1>
 
