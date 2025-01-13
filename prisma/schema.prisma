@@ -36,8 +36,8 @@ model Receta {
 model UsuarioReceta {
   id_usuario      Int
   id_receta       Int
-  usuario         Usuario         @relation(fields: [id_usuario], references: [id_usuario])
-  receta          Receta          @relation(fields: [id_receta], references: [id_receta])
+  usuario         Usuario         @relation(fields: [id_usuario], references: [id_usuario], onDelete: Cascade)
+  receta          Receta          @relation(fields: [id_receta], references: [id_receta], onDelete: Cascade)
 
   @@id([id_usuario, id_receta]) // Clave primaria compuesta
 }
