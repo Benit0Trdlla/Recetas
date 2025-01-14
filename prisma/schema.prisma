@@ -26,8 +26,9 @@ model Usuario {
 model Receta {
   id_receta       Int             @id @default(autoincrement())
   titulo          String
-  descripcion     String?
-  ingredientes    String?
+  descripcion     String
+  ingredientes    String
+  imagen          String?
   id_usuario      Int             // Clave foránea para el usuario que creó la receta
   usuarioCreador  Usuario         @relation(fields: [id_usuario], references: [id_usuario]) // Relación muchos a uno
   usuariosGuardados UsuarioReceta[] // Relación muchos a muchos: una receta puede ser guardada por muchos usuarios

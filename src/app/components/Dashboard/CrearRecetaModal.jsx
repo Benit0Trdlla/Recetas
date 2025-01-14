@@ -34,6 +34,12 @@ export default function CrearRecetaModal() {
                                     <textarea className="form-control" name="descripcion" id="floatingTextarea"></textarea>
                                     <label htmlFor="descripcion">Descripción</label>
                                 </div>
+
+                                <div className="form-floating mb-3 w-100">
+                                    <input type="file" className="form-control" id="inputImage" name="imagen"/>
+                                    <label htmlFor="imagen">Foto de tu receta</label>
+                                </div>
+
                                 <div className="modal-footer">
                                     <button type="submit" className="btn btn-primary text-white">Crear</button>
                                 </div>

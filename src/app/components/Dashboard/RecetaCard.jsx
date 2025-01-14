@@ -1,9 +1,12 @@
-import EditarRecetaModal from "./EditarRecetaModal"
 import EliminarReceta from "./EliminarReceta"
+import Link from "next/link"
 
 export default function RecetaCard({ receta }) {
     return (
         <div className="card h-100" style={{ width: "18rem" }}>
+            {receta.imagen && (
+                <img src={receta.imagen} className="card-img-top img-fluid" style={{ height: "300px", objectFit: "cover", objectPosition: "center" }} alt="..."></img>
+            )}
             <div className="card-body">
                 <h5 className="card-title">{receta.titulo}</h5>
                 <p className="card-text">{receta.descripcion}</p>
@@ -14,9 +17,8 @@ export default function RecetaCard({ receta }) {
                 ))}
             </ul>
             <div className="card-body d-flex gap-2">
-                {receta.id_receta}
                 <EliminarReceta recetaId={receta.id_receta} />
-                <EditarRecetaModal />
+                <Link href={`/recetas/${receta.id_receta}/edit`} className="btn btn-primary">Editar Receta</Link>
             </div>
         </div>
     )
