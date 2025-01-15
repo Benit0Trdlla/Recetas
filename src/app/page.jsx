@@ -1,5 +1,17 @@
 import Image from "next/image"
-export default function HomePage() {
+import db from "@/libs/db";
+import Link from "next/link";
+export default async function HomePage() {
+  const recetas = await db.receta.findMany({
+    take: 4, 
+    select: {
+      id_receta: true,
+      titulo: true,
+      descripcion: true,
+      imagen: true
+    }
+  });
+
   return (
     <>
       <div className="container mt-3 mt-lg-5">
@@ -21,35 +33,20 @@ export default function HomePage() {
             <h2 className="mb-2 mt-3 text-white fw-bold">Recetas populares</h2>
             <hr className="w-25 mx-auto border-2 border-white" />
           </div>
-          <div className="row" >
-            <div className="col-md-3 mb-3">
-              <div className="card border border-white">
-                <div className="card-body text-center bg-dark">
-                  <i className="fa-regular fa-heart fa-2x my-3"></i>
-                  <h5 className="card-title text-white">Pollo al disco</h5>
-                  <a className="" data-bs-toggle="modal" data-bs-target='#test'><strong>Más Información.</strong></a>
-                  {/* Modal */}
-                  <div className="modal fade" id='test' aria-labelledby="ModalJustify" aria-hidden="true">
-                    <div className="modal-dialog">
-                      <div className="modal-content">
-                        <div className="modal-header">
-                          <h5 className="modal-title">test</h5>
-                          <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                        </div>
-                        <div className="modal-body text-black">
-                          <p className='mt-3'>
-                            test txt
-                          </p>
-                        </div>
-                        <div className="modal-footer">
-                          <button type="button" className="btn btn-gray border border-dark text-black" data-bs-dismiss="modal">Cerrar</button>
-                        </div>
-                      </div>
-                    </div>
+          <div className="row">
+            {recetas.map((receta) => (
+              <div className="col-12 col-md-3 mb-3" key={receta.id_receta}>
+                <div className="card h-100" style={{ width: '100%' }}>
+                  <div className="card-body">
+                    <h5 className="card-title">{receta.titulo}</h5>
+                    <p className="card-text">{receta.descripcion}</p>
+                    <Link href={`/recetas/${receta.id_receta}`} className="card-link">
+                      Ver receta completa
+                    </Link>
                   </div>
                 </div>
               </div>
-            </div>
+            ))}
           </div>
         </div>
       </div>

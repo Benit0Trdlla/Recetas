@@ -13,13 +13,13 @@ export default async function DashboardPage() {
     });
 
     return (
-        <div>
+        <>
             <h1 className="text-white fw-bold text-center fs-3">¡Bienvenido al Dashboard donde podras crear y compartir tus recetas!</h1>
-            <div className="d-flex justify-content-center flex-row gap-3">
+            <div className="row">
                 {recetas.map((receta) => (
                     <RecetaCard key={receta.id_receta} receta={receta} />
                 ))}
             </div>
-        </div>
+        </>
     )
 }

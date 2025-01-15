@@ -1,7 +1,23 @@
+* {
+    font-family: system-ui, sans-serif;
+}
+
 body {
     background-color: rgb(38 38 38);
 }
 
 body::-webkit-scrollbar {
     display: none;
-  }
+}
+
+.colors-list-ingredientes{
+    background-color: rgb(38 38 38);
+    border-color: rgb(38 38 38);
+}
+
+.img-receta-resultado{
+    width: 60%;
+    height: 50%;
+    object-fit: cover;
+    object-position: center;
+}
