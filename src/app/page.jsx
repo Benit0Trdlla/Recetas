@@ -2,15 +2,15 @@ import Image from "next/image"
 import db from "@/libs/db";
 import Link from "next/link";
 export default async function HomePage() {
-  const recetas = await db.receta.findMany({
-    take: 4, 
-    select: {
-      id_receta: true,
-      titulo: true,
-      descripcion: true,
-      imagen: true
-    }
-  });
+  // const recetas = await db.receta.findMany({
+  //   take: 4, 
+  //   select: {
+  //     id_receta: true,
+  //     titulo: true,
+  //     descripcion: true,
+  //     imagen: true
+  //   }
+  // });
 
   return (
     <>
@@ -34,7 +34,7 @@ export default async function HomePage() {
             <hr className="w-25 mx-auto border-2 border-white" />
           </div>
           <div className="row">
-            {recetas.map((receta) => (
+            {/* {recetas.map((receta) => (
               <div className="col-12 col-md-3 mb-3" key={receta.id_receta}>
                 <div className="card h-100" style={{ width: '100%' }}>
                   <div className="card-body">
@@ -46,7 +46,7 @@ export default async function HomePage() {
                   </div>
                 </div>
               </div>
-            ))}
+            ))} */}
           </div>
         </div>
       </div>
