@@ -11,11 +11,7 @@ export default function LoginPage() {
     const [error, setError] = useState(null);
 
     const onSubmit = handleSubmit(async data => {
-        console.log(data);
         const res = await signIn('credentials', { ...data, redirect: false })
-
-        console.log(res);
-
         if (res.error) {
             setError(res.error)
         } else {
@@ -27,8 +23,8 @@ export default function LoginPage() {
         <>
             <form className="container d-flex justify-content-center align-items-center vh-50 flex-column" onSubmit={onSubmit}>
                 {error && <p className="alert alert-danger">{error}</p>}
+                
                 <h1 className="text-white fw-bold mt-3">Login</h1>
-
                 <div className="form-floating mb-3">
                     <input type="email"
                         {...(register("email", { required: { value: true, message: "Email is required" } }))}
@@ -37,7 +33,6 @@ export default function LoginPage() {
                 </div>
                 {errors.email && <span className="text-danger fw-bold fs-6 mb-3">{errors.email.message}</span>}
 
-
                 <div className="form-floating mb-3">
                     <input type="password"
                         {...(register("password", { required: { value: true, message: "Password is required" } }))}
@@ -45,8 +40,6 @@ export default function LoginPage() {
                     <label htmlFor="password">Password</label>
                 </div>
                 {errors.password && <span className="text-danger fw-bold fs-6 mb-3">{errors.password.message}</span>}
-
-
 
                 <button className="btn btn-primary">Login</button>
             </form>

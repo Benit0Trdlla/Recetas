@@ -1,6 +1,7 @@
 'use client'
 import { useForm } from "react-hook-form";
 import { useRouter } from "next/navigation";
+
 export default function RegisterPage() {
     const { register, handleSubmit, formState: { errors } } = useForm();
     const router = useRouter();
@@ -10,7 +11,6 @@ export default function RegisterPage() {
             return alert('Passwords do not match');
         }
 
-        console.log(data.password);
         const res = await fetch('/api/auth/register', {
             method: 'POST',
             headers: {

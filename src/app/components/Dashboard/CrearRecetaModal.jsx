@@ -21,14 +21,12 @@ export default function CrearRecetaModal() {
                                         className="form-control" id="floatingTitleInput" />
                                     <label htmlFor="title">Titulo</label>
                                 </div>
-                                {/* {errors.email && <span className="text-danger fw-bold fs-6 mb-3">{errors.email.message}</span>} */}
 
                                 <div className="form-floating mb-3 w-100">
                                     <input type="text" name="ingredientes"
                                         className="form-control" id="floatingIngredientes" />
                                     <label htmlFor="ingredientes">Ingredientes</label>
                                 </div>
-                                {/* {errors.password && <span className="text-danger fw-bold fs-6 mb-3">{errors.password.message}</span>} */}
 
                                 <div className="form-floating mb-3 w-100">
                                     <textarea className="form-control" name="descripcion" id="floatingTextarea"></textarea>
@@ -36,7 +34,7 @@ export default function CrearRecetaModal() {
                                 </div>
 
                                 <div className="form-floating mb-3 w-100">
-                                    <input type="file" className="form-control" id="inputImage" name="imagen"/>
+                                    <input type="file" className="form-control" id="inputImage" name="imagen" accept="image/*"/>
                                     <label htmlFor="imagen">Foto de tu receta</label>
                                 </div>
 

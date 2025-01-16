@@ -1,19 +1,14 @@
 import Image from "next/image"
+import Navbar from "./components/Navbar";
+import RecetaCardHome from "./components/Home/RecetaCard";
 import db from "@/libs/db";
-import Link from "next/link";
+
 export default async function HomePage() {
-  // const recetas = await db.receta.findMany({
-  //   take: 4, 
-  //   select: {
-  //     id_receta: true,
-  //     titulo: true,
-  //     descripcion: true,
-  //     imagen: true
-  //   }
-  // });
+  const recetas = await db.receta.findMany({ take: 4 });
 
   return (
     <>
+      <Navbar />
       <div className="container mt-3 mt-lg-5">
         <div className="row d-flex align-items-center justify-content-center">
           <div className="col-md-6 px-1 lh-lg">
@@ -34,19 +29,7 @@ export default async function HomePage() {
             <hr className="w-25 mx-auto border-2 border-white" />
           </div>
           <div className="row">
-            {/* {recetas.map((receta) => (
-              <div className="col-12 col-md-3 mb-3" key={receta.id_receta}>
-                <div className="card h-100" style={{ width: '100%' }}>
-                  <div className="card-body">
-                    <h5 className="card-title">{receta.titulo}</h5>
-                    <p className="card-text">{receta.descripcion}</p>
-                    <Link href={`/recetas/${receta.id_receta}`} className="card-link">
-                      Ver receta completa
-                    </Link>
-                  </div>
-                </div>
-              </div>
-            ))} */}
+            <RecetaCardHome recetas={recetas} />
           </div>
         </div>
       </div>

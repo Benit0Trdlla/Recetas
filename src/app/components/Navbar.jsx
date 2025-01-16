@@ -1,7 +1,7 @@
 import Link from "next/link"
 import { getServerSession } from "next-auth/next";
 import { authOptions } from "@/app/api/auth/[...nextauth]/route";
-import CrearRecetaModal from "./Dashboard/CrearRecetaModal";
+
 async function Navbar() {
     const session = await getServerSession(authOptions);
     return (
@@ -12,11 +12,11 @@ async function Navbar() {
                 </button>
                 <div className="collapse navbar-collapse" id="navbarNav">
                     <ul className="navbar-nav">
+                        <li className="nav-item">
+                            <Link className="nav-link text-white" aria-current="page" href="/">Home</Link>
+                        </li>
                         {!session?.user ? (
                             <>
-                                <li className="nav-item">
-                                    <Link className="nav-link text-white" aria-current="page" href="/">Home</Link>
-                                </li>
                                 <li className="nav-item">
                                     <Link className="nav-link text-white" href="/auth/login">Login </Link>
                                 </li>
@@ -32,7 +32,6 @@ async function Navbar() {
                                 <li className="nav-item">
                                     <Link className="nav-link text-white" href="/api/auth/signout">Logout </Link>
                                 </li>
-                                <CrearRecetaModal />
                             </>
                         )
                         }
